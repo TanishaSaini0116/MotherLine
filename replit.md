@@ -18,8 +18,7 @@ MotherLine is a full-stack web application designed for managing medical records
 ### Backend Architecture
 - **Runtime**: Node.js with Express.js framework
 - **Language**: TypeScript with ES modules
-- **Database**: PostgreSQL with Drizzle ORM
-- **Database Provider**: Neon Database (serverless PostgreSQL)
+- **Database**: Firebase Firestore (NoSQL document database)
 - **Authentication**: JWT-based authentication with bcrypt password hashing
 - **File Handling**: Multer for multipart form uploads with local storage
 
@@ -127,6 +126,9 @@ MotherLine is a full-stack web application designed for managing medical records
 - Node.js runtime with ES module support
 
 ## Recent Changes
+- July 02, 2025: Migrated from PostgreSQL to Firebase Firestore database
+- July 02, 2025: Updated data models to use string IDs instead of numeric IDs
+- July 02, 2025: Created temporary in-memory storage for development until Firebase credentials are provided
 - July 02, 2025: Added separate page navigation with dedicated Medical Records, Wellness, and Appointments pages
 - July 02, 2025: Fixed database storage issues and implemented proper routing
 - July 02, 2025: Created comprehensive doctor appointment booking system for women's health

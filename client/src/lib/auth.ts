@@ -1,7 +1,7 @@
 import { apiRequest } from "./queryClient";
 
 interface User {
-  id: number;
+  id: string;
   username: string;
   email: string;
 }

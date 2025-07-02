@@ -16,13 +16,13 @@ import { useState, useRef } from "react";
 import { Progress } from "@/components/ui/progress";
 
 interface MedicalRecord {
-  id: number;
+  id: string;
   fileName: string;
   originalName: string;
   fileType: string;
   fileSize: number;
   uploadedAt: string;
-  previewUrl: string;
+  downloadUrl: string;
 }
 
 export default function MedicalRecordsPage() {
@@ -96,7 +96,7 @@ export default function MedicalRecordsPage() {
   });
 
   const deleteMutation = useMutation({
-    mutationFn: async (recordId: number) => {
+    mutationFn: async (recordId: string) => {
       const response = await fetch(`/api/medical-records/${recordId}`, {
         method: "DELETE",
         headers: {
@@ -172,10 +172,10 @@ export default function MedicalRecordsPage() {
   };
 
   const handlePreview = (record: MedicalRecord) => {
-    window.open(record.previewUrl, "_blank");
+    window.open(record.downloadUrl, "_blank");
   };
 
-  const handleDelete = (recordId: number) => {
+  const handleDelete = (recordId: string) => {
     deleteMutation.mutate(recordId);
   };
 

@@ -13,13 +13,13 @@ import {
 import { formatDistanceToNow } from "date-fns";
 
 interface MedicalRecord {
-  id: number;
+  id: string;
   fileName: string;
   originalName: string;
   fileType: string;
   fileSize: number;
   uploadedAt: string;
-  previewUrl: string;
+  downloadUrl: string;
 }
 
 export default function MedicalRecords() {
@@ -40,7 +40,7 @@ export default function MedicalRecords() {
   });
 
   const deleteMutation = useMutation({
-    mutationFn: async (recordId: number) => {
+    mutationFn: async (recordId: string) => {
       const response = await fetch(`/api/medical-records/${recordId}`, {
         method: "DELETE",
         headers: {
@@ -67,10 +67,10 @@ export default function MedicalRecords() {
   });
 
   const handlePreview = (record: MedicalRecord) => {
-    window.open(record.previewUrl, "_blank");
+    window.open(record.downloadUrl, "_blank");
   };
 
-  const handleDelete = (recordId: number) => {
+  const handleDelete = (recordId: string) => {
     deleteMutation.mutate(recordId);
   };
 

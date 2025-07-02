@@ -7,19 +7,19 @@ const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 
 export interface AuthRequest extends Request {
   user?: {
-    id: number;
+    id: string;
     username: string;
     email: string;
   };
 }
 
-export function generateToken(user: { id: number; username: string; email: string }) {
+export function generateToken(user: { id: string; username: string; email: string }) {
   return jwt.sign(user, JWT_SECRET, { expiresIn: "7d" });
 }
 
 export function verifyToken(token: string) {
   try {
-    return jwt.verify(token, JWT_SECRET) as { id: number; username: string; email: string };
+    return jwt.verify(token, JWT_SECRET) as { id: string; username: string; email: string };
   } catch {
     return null;
   }

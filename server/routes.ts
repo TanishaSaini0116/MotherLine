@@ -5,7 +5,7 @@ import path from "path";
 import { storage } from "./storage";
 import { authenticateToken, generateToken, hashPassword, comparePassword, type AuthRequest } from "./middleware/auth";
 import { upload } from "./middleware/upload";
-import { insertUserSchema, loginUserSchema, insertWellnessEntrySchema } from "@shared/schema";
+import { insertUserSchema, loginUserSchema, insertWellnessEntrySchema, insertMedicalRecordSchema } from "@shared/types";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Serve uploaded files
@@ -58,12 +58,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { email, password } = loginUserSchema.parse(req.body);
       
+      // Get user with password for authentication
+      const userWithPassword = await (storage as any).getUserWithPassword?.(email);
       const user = await storage.getUserByEmail(email);
-      if (!user) {
+      
+      if (!user || !userWithPassword) {
         return res.status(401).json({ message: "Invalid email or password" });
       }
 
-      const isValidPassword = await comparePassword(password, user.password);
+      const isValidPassword = await comparePassword(password, userWithPassword.password);
       if (!isValidPassword) {
         return res.status(401).json({ message: "Invalid email or password" });
       }
@@ -106,7 +109,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         originalName: req.file.originalname,
         fileType: req.file.mimetype,
         fileSize: req.file.size,
-        filePath: req.file.path,
+        downloadUrl: `/uploads/${req.file.filename}`,
       });
 
       res.status(201).json({
@@ -124,12 +127,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/medical-records", authenticateToken, async (req: AuthRequest, res) => {
     try {
       const records = await storage.getUserMedicalRecords(req.user!.id);
-      const recordsWithUrls = records.map(record => ({
-        ...record,
-        previewUrl: `/uploads/${record.fileName}`,
-      }));
-      
-      res.json({ records: recordsWithUrls });
+      res.json({ records });
     } catch (error: any) {
       res.status(500).json({ message: error.message || "Failed to fetch records" });
     }
@@ -137,7 +135,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.delete("/api/medical-records/:id", authenticateToken, async (req: AuthRequest, res) => {
     try {
-      const id = parseInt(req.params.id);
+      const id = req.params.id;
       const success = await storage.deleteMedicalRecord(id, req.user!.id);
       
       if (!success) {
