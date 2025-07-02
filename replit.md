@@ -126,8 +126,12 @@ MotherLine is a full-stack web application designed for managing medical records
 - `JWT_SECRET` for token signing (defaults to development key)
 - Node.js runtime with ES module support
 
-## Changelog
-- July 02, 2025. Initial setup
+## Recent Changes
+- July 02, 2025: Added separate page navigation with dedicated Medical Records, Wellness, and Appointments pages
+- July 02, 2025: Fixed database storage issues and implemented proper routing
+- July 02, 2025: Created comprehensive doctor appointment booking system for women's health
+- July 02, 2025: Enhanced header navigation with proper page links
+- July 02, 2025: Initial setup with authentication, file upload, and wellness tracking
 
 ## User Preferences
 

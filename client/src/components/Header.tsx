@@ -27,9 +27,10 @@ export default function Header() {
           </div>
           
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#dashboard" className="text-foreground hover:text-secondary transition-colors">Dashboard</a>
-            <a href="#records" className="text-foreground hover:text-secondary transition-colors">Medical Records</a>
-            <a href="#wellness" className="text-foreground hover:text-secondary transition-colors">Wellness</a>
+            <a href="/dashboard" className="text-foreground hover:text-secondary transition-colors">Dashboard</a>
+            <a href="/medical-records" className="text-foreground hover:text-secondary transition-colors">Medical Records</a>
+            <a href="/wellness" className="text-foreground hover:text-secondary transition-colors">Wellness</a>
+            <a href="/appointments" className="text-foreground hover:text-secondary transition-colors">Appointments</a>
           </nav>
 
           <div className="flex items-center space-x-4">

@@ -1,6 +1,6 @@
 import { users, medicalRecords, wellnessEntries, type User, type InsertUser, type MedicalRecord, type InsertMedicalRecord, type WellnessEntry, type InsertWellnessEntry } from "@shared/schema";
 import { db } from "./db";
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, and } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -61,17 +61,15 @@ export class DatabaseStorage implements IStorage {
     const [record] = await db
       .select()
       .from(medicalRecords)
-      .where(eq(medicalRecords.id, id))
-      .where(eq(medicalRecords.userId, userId));
+      .where(and(eq(medicalRecords.id, id), eq(medicalRecords.userId, userId)));
     return record || undefined;
   }
 
   async deleteMedicalRecord(id: number, userId: number): Promise<boolean> {
     const result = await db
       .delete(medicalRecords)
-      .where(eq(medicalRecords.id, id))
-      .where(eq(medicalRecords.userId, userId));
-    return result.rowCount > 0;
+      .where(and(eq(medicalRecords.id, id), eq(medicalRecords.userId, userId)));
+    return (result.rowCount ?? 0) > 0;
   }
 
   async createWellnessEntry(entry: InsertWellnessEntry & { userId: number }): Promise<WellnessEntry> {

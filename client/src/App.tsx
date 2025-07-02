@@ -7,6 +7,9 @@ import { isAuthenticated } from "./lib/auth";
 import Login from "@/pages/login";
 import Register from "@/pages/register";
 import Dashboard from "@/pages/dashboard";
+import MedicalRecordsPage from "@/pages/medical-records";
+import WellnessPage from "@/pages/wellness";
+import AppointmentsPage from "@/pages/appointments";
 import NotFound from "@/pages/not-found";
 
 function ProtectedRoute({ component: Component }: { component: () => JSX.Element }) {
@@ -22,6 +25,9 @@ function Router() {
     <Switch>
       <Route path="/" component={() => <ProtectedRoute component={Dashboard} />} />
       <Route path="/dashboard" component={() => <ProtectedRoute component={Dashboard} />} />
+      <Route path="/medical-records" component={() => <ProtectedRoute component={MedicalRecordsPage} />} />
+      <Route path="/wellness" component={() => <ProtectedRoute component={WellnessPage} />} />
+      <Route path="/appointments" component={() => <ProtectedRoute component={AppointmentsPage} />} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
       <Route component={NotFound} />
