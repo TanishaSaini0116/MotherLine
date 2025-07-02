@@ -6,26 +6,19 @@ import * as admin from 'firebase-admin';
 
 // Firebase client configuration
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY || 'demo-key',
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN || 'demo-project.firebaseapp.com',
-  projectId: process.env.FIREBASE_PROJECT_ID || 'demo-project',
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET || 'demo-project.appspot.com',
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || '123456789',
-  appId: process.env.FIREBASE_APP_ID || '1:123456789:web:abcdef'
+  apiKey: process.env.FIREBASE_API_KEY || 'AIzaSyAhMSmfBU9FMlQ6P4Nigqv-xNoKU48CRWg',
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN || 'mother-line.firebaseapp.com',
+  projectId: process.env.FIREBASE_PROJECT_ID || 'mother-line',
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET || 'mother-line.firebasestorage.app',
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || '532699746424',
+  appId: process.env.FIREBASE_APP_ID || '1:532699746424:web:e892b2120b6f4252be5d8d'
 };
 
-// Initialize Firebase client only if config is provided
-let app: any;
-let db: any;
-let storage: any;
-let auth: any;
-
-if (process.env.FIREBASE_API_KEY) {
-  app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-  db = getFirestore(app);
-  storage = getStorage(app);
-  auth = getAuth(app);
-}
+// Initialize Firebase client
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+const db = getFirestore(app);
+const storage = getStorage(app);
+const auth = getAuth(app);
 
 export { db, storage, auth };
 
