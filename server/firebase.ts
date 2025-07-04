@@ -6,12 +6,13 @@ import * as admin from 'firebase-admin';
 
 // Firebase client configuration
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY || 'AIzaSyAhMSmfBU9FMlQ6P4Nigqv-xNoKU48CRWg',
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN || 'mother-line.firebaseapp.com',
-  projectId: process.env.FIREBASE_PROJECT_ID || 'mother-line',
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET || 'mother-line.firebasestorage.app',
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || '532699746424',
-  appId: process.env.FIREBASE_APP_ID || '1:532699746424:web:e892b2120b6f4252be5d8d'
+  apiKey: "AIzaSyBVDVAQuxCogFRzdy28isE6pp1ySqqcXK4",
+  authDomain: "mother-line-b9390.firebaseapp.com",
+  projectId: "mother-line-b9390",
+  storageBucket: "mother-line-b9390.firebasestorage.app",
+  messagingSenderId: "908046010675",
+  appId: "1:908046010675:web:979e942a9effbba07c1646",
+  measurementId: "G-P1X7NGZQVN"
 };
 
 // Initialize Firebase client
