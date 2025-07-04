@@ -1,6 +1,7 @@
 import { getUser, logout } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 import { Heart, LogOut, User } from "lucide-react";
+import { Ribbon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,9 +21,9 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
-              <Heart className="w-6 h-6 text-white" />
-            </div>
+            <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center">
+              <Ribbon className="w-6 h-6 text-white" />
+            </div>
             <h1 className="text-2xl font-bold text-secondary">MotherLine</h1>
           </div>
           

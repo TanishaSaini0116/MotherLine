@@ -353,7 +353,7 @@ export default function AppointmentsPage() {
               <CardContent className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Phone className="w-4 h-4 text-secondary" />
-                  <span className="text-sm text-foreground">+1 (555) 123-4567</span>
+                  <span className="text-sm text-foreground">+91 8511303489</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-4 h-4 text-secondary" />
@@ -361,7 +361,7 @@ export default function AppointmentsPage() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Clock className="w-4 h-4 text-secondary" />
-                  <span className="text-sm text-foreground">Mon-Fri: 8AM-8PM</span>
+                  <span className="text-sm text-foreground">Mon-Fri: 8AM-10PM</span>
                 </div>
               </CardContent>
             </Card>
@@ -375,9 +375,9 @@ export default function AppointmentsPage() {
                   </div>
                   <div>
                     <p className="font-medium text-red-800 mb-1">Medical Emergency?</p>
-                    <p className="text-sm text-red-700 mb-2">If this is a medical emergency, please call 911 or visit your nearest emergency room immediately.</p>
+                    <p className="text-sm text-red-700 mb-2">If this is a medical emergency, please call 181 or visit your nearest emergency room immediately.</p>
                     <Button variant="outline" size="sm" className="border-red-300 text-red-700 hover:bg-red-50">
-                      Call 911
+                      Call 181
                     </Button>
                   </div>
                 </div>

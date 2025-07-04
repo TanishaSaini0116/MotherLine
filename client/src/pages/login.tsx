@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { login, isAuthenticated } from "@/lib/auth";
 import { Heart } from "lucide-react";
+import { Ribbon } from "lucide-react";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -62,9 +63,9 @@ export default function Login() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="inline-flex items-center space-x-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
-              <Heart className="w-7 h-7 text-white" />
-            </div>
+            <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center">
+              <Ribbon className="w-7 h-7 text-white" />
+            </div>
             <h1 className="text-3xl font-bold text-secondary">MotherLine</h1>
           </div>
           <p className="text-muted-foreground">Your secure digital health companion</p>
