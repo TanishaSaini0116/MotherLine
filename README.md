@@ -1,8 +1,8 @@
-💖 WomenWellness – Digital Health Tool for Women
+💖 MotherLine – Digital Health Tool for Women
 A secure and user-friendly web platform designed to empower women by simplifying medical data management and improving access to health records.
 
 🔍 Project Overview:
-WomenWellness enables users (patients) to:
+MotherLine enables users (patients) to:
 
 Register and log in securely using JWT authentication
 
